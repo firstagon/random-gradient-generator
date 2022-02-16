@@ -1,0 +1,249 @@
+/* :root {
+    --margin-bottom: calc(1.8vw + 20px + 1.5rem);
+} */
+
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    height: 100%;
+    margin: 0 auto;
+    font-family: 'Mukta', sans-serif;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.butHolder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: black;
+}
+
+.gradient-top {
+    display: flex;
+    justify-content: center;
+
+    flex-grow: 1;
+    height: 100px;
+    background: linear-gradient(rgb(25, 10, 56) 0%, rgb(192, 47, 244) 100%);
+    
+}
+
+button:focus {
+    outline: none;
+    background: rgb(113, 18, 201);
+
+    color: black;
+
+    border-style: outset;
+}
+
+button:hover {
+    outline: none;
+    background: rgb(113, 18, 201);
+
+    color: black;
+
+    border-style: inset;
+}
+
+button,
+.log {
+    display: flex;
+    justify-self: center;
+
+    background: 0;
+    border-radius: 0.5em;
+    border-color: blueviolet;
+    padding: 0.5em 0.5em;
+    margin: 10px;
+
+    font-size: 1.7vh;
+    color: blueviolet;
+
+    user-select: none;
+
+}
+
+.log {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+
+    border: 2px solid blueviolet;
+
+    padding: 5px;
+    margin: 0;
+
+    max-width: 20%;
+}
+
+.log:hover {
+    outline: none;
+    background: rgb(113, 18, 201);
+
+    color: black;
+    border-style: inset;
+}
+
+#number-log {
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    left: 2vw;    
+
+    width: 2.1vh;
+    height: 2.1vh;
+
+    border-radius: 2vh;
+    border: 2px none rgba(193, 193, 199, 0.308);
+
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+
+    background: blueviolet;
+    
+}
+
+.butt-holder {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+
+    max-width: 30%;
+    max-height: 100%;
+}
+
+.log-holder {
+    
+    background-color: black;
+
+    width: 99vw;
+    min-height: 10vh;
+    overflow: auto;
+
+    padding: 0.5vw;
+
+    color: blueviolet;
+
+    bottom: var(--margin-bottom);
+}
+
+.log-holder-invisible {
+    display: none;
+}
+
+.log-holder::-webkit-scrollbar {
+    height: 1vh;
+}
+
+.log-holder::-webkit-scrollbar-track {
+    background: black;
+}
+
+.log-holder::-webkit-scrollbar-thumb {
+    background: rgba(207, 206, 206, 0.336);
+    border-radius: 0.5vh;
+}
+
+.log-holder::-webkit-scrollbar-thumb:hover {
+    background: rgb(207, 206, 206);
+}
+
+
+.close-holder {
+    display: flex;
+    position: -webkit-sticky;
+    position: sticky;
+
+    justify-content: flex-end;
+}
+
+svg {
+    display: block;
+    position: fixed;
+
+
+    width: 20px;
+    height: 20px;
+  }
+
+  svg:hover {
+    transition: all 0.5s ease-in-out;
+    transform: rotate(0.5turn);
+  }
+  
+  svg line {
+    stroke: rgba(207, 206, 206, 0.336);
+    stroke-width: 10;
+  }
+
+  svg:hover line {
+    stroke: rgb(207, 206, 206);
+  }
+
+ul {
+    display: flex;
+    justify-content: flex-start;
+
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    flex-flow: column;
+    align-self: start;
+    justify-content: flex-start;
+    align-items: center;
+
+    max-width: 10%;
+
+    margin-right: 5px;
+
+    font-size: 1.5vh;
+
+    border: 0.1rem solid black;
+
+}
+
+.li-style {
+    background: red;
+    width: 50%;
+    min-height: 2em;
+    max-width: 66px;
+}
+
+p {
+    text-align: center;
+    word-wrap: normal;
+    padding: 0;
+    margin: 0;
+}
+
+.li-selected {
+    border: 0.1rem solid blueviolet;
+    border-radius: 0.5em;
+}
+
+@media (max-device-width: 330px) {
+    button, #number-log, p, li {
+        font-size: 0.6rem;
+       }   
+   }
+   
