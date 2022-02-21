@@ -268,3 +268,43 @@ const logLenghtUpdateHandler = () => {
 
 
 }
+
+const copyLoggedGradient = () => {
+    const loggedGradient = document.querySelectorAll('li');
+
+    loggedGradient.forEach( elem => {
+        elem.addEventListener('click', () => {
+            const dataToCopy = elem.querySelector('div').style.background;
+
+            const localDiv = document.createElement('div');
+            localDiv.className = 'local-storage';
+            localDiv.textContent = dataToCopy;
+            // console.log(localDiv);
+            const text = localDiv.textContent; 
+            navigator.clipboard.writeText(text);
+            // console.log(elem);
+
+            // const popUpNoteOfCopyed =  document.createElement('div');
+            // popUpNoteOfCopyed.className = 'popUp';
+            // if (!elem.getElementsByClassName('popUp')) {
+            //     elem.append(popUpNoteOfCopyed);
+            // } else {
+            //     return;
+            // };
+            
+
+
+
+
+
+
+            // const loggedHistory = document.querySelector('ul').lastChild;
+            // const ulu = document.querySelectorAll('li');
+            // sessionStorage.setItem( ulu.length, loggedHistory);
+        })
+    })
+}
+
+randomizeButt.addEventListener('click', copyLoggedGradient);
+
+// console.log(gradientMain.style.background);
