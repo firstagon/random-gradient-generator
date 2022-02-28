@@ -199,6 +199,10 @@ ul {
     display: flex;
     justify-content: flex-start;
 
+    flex-direction: row;
+    flex-wrap: nowrap;
+    
+
     list-style: none;
 
     padding: 0;
@@ -215,6 +219,7 @@ li {
     max-width: 10%;
 
     margin-right: 5px;
+    padding: 0 1.1rem;
 
     font-size: 1.5vh;
 
@@ -240,10 +245,20 @@ p {
     border: 0.1rem solid blueviolet;
     border-radius: 0.5em;
 }
-
-@media (max-device-width: 330px) {
-    button, #number-log, p, li {
-        font-size: 0.6rem;
-       }   
-   }
    
+
+:root {
+    --popup-bottom: calc(0.2rem, + 66px + 1.5vh + 1.5vh + 400px);
+}
+
+.popUp {
+    display: flex;
+    background: black;
+}
+
+.popUpDissapear {
+    display: flex;
+
+    transition: all 1s ease-in;
+    color: black;
+}

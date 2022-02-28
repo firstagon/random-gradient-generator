@@ -5,8 +5,6 @@ const linearButt = document.querySelector('#linear-gradient');
 const radialButt = document.querySelector('#radial-gradient');
 const showLogButton = document.querySelector('.log');
 
-// const getScroll = document.querySelector('ul');
-
 const gradientCurrent = gradientMain.style.background;
 
 const min = 0;
@@ -19,58 +17,26 @@ let ng = 0;
 let gradtype = true;
 
 randomizeButt.focus();
-// getScroll.scroll(0, 100);
-
-
-
-// const getGradient = function(randGrad, typeGradient) {
-//     let gradFirst = randGrad.slice(0, 3).toString();
-//     let gradSec = randGrad.slice(3).toString();
-//     let type = typeGradient;
-//     let gradCreated = `${type}(0deg, rgb(${gradFirst}) 0%, rgb(${gradSec}) 100%)`;
-//     // console.log(gradCreated);
-
-//     gradientLog.push(gradCreated);
-//     console.log(gradientLog);
-
-//     gradientMain.style.background = gradCreated;
-// };
 
 const getGradient = function(randGrad, typeGradient) {
     let gradFirst = randGrad.slice(0, 3).toString();
     let gradSec = randGrad.slice(3).toString();
 
     let type = `${typeGradient}`;
-    // let gradCreated = `${type}(0deg, rgb(${gradFirst}) 0%, rgb(${gradSec}) 100%)`;
-    // console.log(gradCreated);
-    // console.log(type)
 
     switch (gradtype) {
         case true :
-        // gradCreated = {typ: `${type}`, grad: ` rgb(${gradFirst}) 0%, rgb(${gradSec}) 100%)`};
         gradCreated = {typ:`${type}`, grad1:`${gradFirst}`, grad2:`${gradSec}`};
-        // break;
         case false:
-            // gradCreated = {typ: `${type}`, grad: `rgb(${gradFirst}) 0%, rgb(${gradSec}) 100%)`};
             gradCreated = {typ:`${type}`, grad1:`${gradFirst}`, grad2:`${gradSec}`};
-            // break;
     }
 
-
     gradientLog.push(gradCreated);
-    // console.log(gradientLog);
-    
     gradientMain.style.background = `${gradientLog[ng].typ}(rgb(${gradientLog[ng].grad1}) 0%, rgb(${gradientLog[ng].grad2}) 100%)`;
 
-    ++ng;
-    
-    // console.log(ng);
-    
+    ++ng;  
 }
 
-
-
-// типа так и работает стрелка?
 const typeOfGradient =  () => {
     
     const defaul = 'linear-gradient';
@@ -83,21 +49,16 @@ const typeOfGradient =  () => {
     } else if (gradtype === false){
         type = radial;
     }
-    // console.log(type);
     return type;
     
 }
 
-// typeOfGradient();
-
 const typeGradSwitcherHandler = (typeOfGradient) => {
     if (typeOfGradient === 'linear') {
         gradtype = true;
-        // console.log(gradtype);
         return gradtype;
     } else if (typeOfGradient === 'radial') {
         gradtype = false;
-        // console.log(gradtype);
         return gradtype;
     } else {
         gradtype = true;
@@ -108,31 +69,14 @@ const instaUpdaterHandler = (type) => {
     type = type
     
     if (type == false) {
-
-  
         gradientMain.style.background = gradientMain.style.background.replace('linear', 'radial');
-        // gradientMain.style.background = gradientMain.style.background.replace('0deg,', '');
-        console.log(gradientMain.style.background);
-
         randomizeButt.focus();
         return;
-    // console.log(gradientMain.style.background);
-
     } else if (type == true) {
-
         gradientMain.style.background = gradientMain.style.background.replace('radial', 'linear');
-        // const currentGradient = gradientMain.style.background;
-        // currentGradient.replace('radial', 'linear');
-    
-        // // currentGradient.replace('0deg,', '');
-        // console.log(currentGradient);
-        // // return gradientMain.style.background = currentGradient;
-        // console.log('Linear should be working')
-
         randomizeButt.focus();
         return;
     }
-    // console.log(currentGradien);
     console.log('update me pls');
 }
 
@@ -142,16 +86,13 @@ const randomGradient = (min, max) => {
     for (let i = 0; i < 6; i++) {
         let arrItem = Math.floor(Math.random() * (max - min) + min);
         arrayHex.push(arrItem);
-        // console.log(arrayHex);
     }
-// console.log(arrayHex);
 return arrayHex;
 
 }
 
 const randButtHandler= () => {
     getGradient(randomGradient(0, 255), typeOfGradient());
-    // alert('Button was clicked');
 }
 
 randomizeButt.addEventListener('click', randButtHandler);
@@ -164,19 +105,12 @@ window.onload = () => {
 
 };
 
-// Creating gradient log history
-
-// const gradientLogHandler = () => {
-//     const numOfGradient = gradientLog.length;
-    
-// }
 
 const creatingLogElement = () => {
     const numberOfLogged = document.getElementById('number-log');
     const numberOfGradients = document.querySelectorAll('li').length;
-    // console.log(ng);
     const gradientEl = document.createElement('li');
-    // gradientEl.className = 'log-item';
+
     gradientEl.innerHTML = 
     `<div class="li-style" style="background: ${gradientLog[ng-1].typ}(rgb(${gradientLog[ng-1].grad1}) 0%, rgb(${gradientLog[ng-1].grad2}) 100%);"></div>
     <p> ${gradientLog[ng-1].typ} </p>
@@ -185,58 +119,35 @@ const creatingLogElement = () => {
 
     const listOfLog = document.querySelector('ul');
     listOfLog.append(gradientEl);
-    // console.log(ng);
 
     numberOfLogged.style.display = 'flex';
-
-    // console.log(typeof numberOfGradients);
     numberOfLogged.innerHTML = numberOfGradients + 1;
- 
-
-
 };
 
-// Creating visible selection of created log elements
+// Creating visible selection for created log elements
 document.getElementById("log-history").addEventListener('mouseover', ()=> {
     document.querySelectorAll('.log-holder li').forEach(elem => { 
-        // console.log(elem);
         elem.addEventListener('mouseenter', () => {
-            // elem.style.background = 'linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0))'
             elem.classList.add('li-selected');
-            // setTimeout(function() {
-        //     elem.style.background = 'purple';
-        // }, 500);
         });
 
         elem.addEventListener('mouseleave', () => {
-            // elem.style.background = ''
             elem.classList.remove('li-selected');
         });
 
         elem.addEventListener('click', function() {
-            // console.log(elem.querySelector('li div'));
         gradientMain.style.background = elem.querySelector('li div').style.background;
     })});
 
 })
-
-// document.querySelectorAll('.log-holder li').forEach(elem => { 
-//     // console.log(elem);
-//     elem.addEventListener('click', function() {
-//         // console.log(elem.querySelector('li div'));
-//     gradientMain.style.background = elem.querySelector('li div').style.background;
-// })});
-
 
 randomizeButt.addEventListener('click', creatingLogElement);
 
 //scrolling horizontal
 
 const scrollToLog = document.getElementById("log-history");
-
   
 window.addEventListener("wheel", function (e) {
-        // e.preventDefault();
     if (e.deltaY > 0) {
         scrollToLog.scrollLeft += 20;
     }else { 
@@ -251,60 +162,50 @@ const closingLogHistory = () => {
     if(logHolder.className === 'log-holder-invisible') {
         logHolder.className = 'log-holder';
         randomizeButt.focus();
-        // closingLogBlock.style.display = 'block';
     } else {
         logHolder.className = 'log-holder-invisible';
         randomizeButt.focus();
-        // closingLogBlock.style.display = 'none';
     }
 }
 
 showLogButton.addEventListener('click', closingLogHistory);
 document.querySelector('.close-holder svg').addEventListener('click', closingLogHistory);
 
-const logLenghtUpdateHandler = () => {
-    const numberOfLogged = document.getElementById('number-log');
-    
-
-
-}
-
 const copyLoggedGradient = () => {
-    const loggedGradient = document.querySelectorAll('li');
+    
+   const gradElem = document.querySelector('ul').lastChild;
+   gradElem.addEventListener('click', () => {
 
-    loggedGradient.forEach( elem => {
-        elem.addEventListener('click', () => {
-            const dataToCopy = elem.querySelector('div').style.background;
-
+    //checking for clipboard API support
+    if(navigator.clipboard){
+        const dataToCopy = gradElem.querySelector('div').style.background;
+            //Copynig to a clipboard
             const localDiv = document.createElement('div');
             localDiv.className = 'local-storage';
             localDiv.textContent = dataToCopy;
-            // console.log(localDiv);
             const text = localDiv.textContent; 
             navigator.clipboard.writeText(text);
-            // console.log(elem);
+    } else {
+        alert('cant copy instantly, use yours mouse :(')
+    }
 
-            // const popUpNoteOfCopyed =  document.createElement('div');
-            // popUpNoteOfCopyed.className = 'popUp';
-            // if (!elem.getElementsByClassName('popUp')) {
-            //     elem.append(popUpNoteOfCopyed);
-            // } else {
-            //     return;
-            // };
-            
+            //antispam notifer 'copied!' protection
+            const chekTheCopied = gradElem.querySelectorAll('a').length;
+            if(chekTheCopied <1) {
+                const popUpNoteOfCopyed =  document.createElement('a');
+                popUpNoteOfCopyed.className = 'popUp';
+                popUpNoteOfCopyed.textContent = 'Copied!';
+                gradElem.querySelector('div').append(popUpNoteOfCopyed);
 
+                gradElem.addEventListener('mouseleave', function() {
+                    popUpNoteOfCopyed.className = 'popUpDissapear';
+                });
+                setTimeout(() => {popUpNoteOfCopyed.remove()}, 2000);
+            } else {
+                return;
+            }
 
-
-
-
-
-            // const loggedHistory = document.querySelector('ul').lastChild;
-            // const ulu = document.querySelectorAll('li');
-            // sessionStorage.setItem( ulu.length, loggedHistory);
-        })
     })
-}
+};
 
 randomizeButt.addEventListener('click', copyLoggedGradient);
-
-// console.log(gradientMain.style.background);
